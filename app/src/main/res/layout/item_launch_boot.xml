@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
             android:paddingBottom="20dp">
 
 
@@ -24,6 +25,7 @@
             android:id="@+id/Button_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="开始使用"
             android:textSize="28sp"
             android:visibility="gone" />

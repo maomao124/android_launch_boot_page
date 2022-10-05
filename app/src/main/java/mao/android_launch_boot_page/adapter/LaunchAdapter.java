@@ -2,6 +2,7 @@ package mao.android_launch_boot_page.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,10 +37,24 @@ import mao.android_launch_boot_page.R;
 public class LaunchAdapter extends PagerAdapter
 {
 
+    /**
+     * 标签
+     */
+    private static final String TAG = "LaunchAdapter";
+
+    /**
+     * 上下文
+     */
     private final Context context;
 
+    /**
+     * 视图列表
+     */
     private final List<View> viewList;
 
+    /**
+     * 图片
+     */
     private final int[] images = new int[]
             {
                     R.drawable.l1,
@@ -53,10 +68,11 @@ public class LaunchAdapter extends PagerAdapter
     {
         this.context = context;
 
-        viewList = new ArrayList<>(5);
+        viewList = new ArrayList<>(images.length);
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < images.length; i++)
         {
+            Log.d(TAG, "LaunchAdapter: " + i);
             View view = LayoutInflater.from(context).inflate(R.layout.item_launch_boot, null);
             ImageView imageView = view.findViewById(R.id.ImageView);
             imageView.setImageResource(images[i]);
@@ -70,11 +86,12 @@ public class LaunchAdapter extends PagerAdapter
                         RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT));
 
                 radioButton.setPadding(10, 10, 10, 10);
-                radioGroup.addView(radioButton);
                 if (j == i)
                 {
                     radioButton.setChecked(true);
                 }
+                radioButton.setEnabled(false);
+                radioGroup.addView(radioButton);
             }
 
             if (i == images.length - 1)
@@ -98,13 +115,13 @@ public class LaunchAdapter extends PagerAdapter
     @Override
     public int getCount()
     {
-        return 0;
+        return viewList.size();
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object)
     {
-        return false;
+        return view == object;
     }
 
     @NonNull
