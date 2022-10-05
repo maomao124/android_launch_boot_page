@@ -2,6 +2,8 @@ package mao.android_launch_boot_page.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,7 +92,7 @@ public class LaunchAdapter extends PagerAdapter
                 {
                     radioButton.setChecked(true);
                 }
-                radioButton.setEnabled(false);
+                radioButton.setClickable(false);
                 radioGroup.addView(radioButton);
             }
 

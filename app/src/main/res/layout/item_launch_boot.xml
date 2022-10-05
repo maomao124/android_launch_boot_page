@@ -28,6 +28,8 @@
             android:layout_centerInParent="true"
             android:text="开始使用"
             android:textSize="28sp"
+            android:background="@color/purple_200"
+            android:textColor="#00ff00"
             android:visibility="gone" />
 
 </RelativeLayout>
