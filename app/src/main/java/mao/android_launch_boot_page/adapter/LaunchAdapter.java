@@ -1,8 +1,10 @@
 package mao.android_launch_boot_page.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -15,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+import mao.android_launch_boot_page.MainActivity2;
 import mao.android_launch_boot_page.R;
 
 /**
@@ -83,11 +86,11 @@ public class LaunchAdapter extends PagerAdapter
                     @Override
                     public void onClick(View v)
                     {
-
+                        context.startActivity(new Intent(context, MainActivity2.class));
                     }
                 });
             }
-
+            viewList.add(view);
         }
 
     }
@@ -102,5 +105,20 @@ public class LaunchAdapter extends PagerAdapter
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object)
     {
         return false;
+    }
+
+    @NonNull
+    @Override
+    public Object instantiateItem(@NonNull ViewGroup container, int position)
+    {
+        View view = viewList.get(position);
+        container.addView(view);
+        return view;
+    }
+
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object)
+    {
+        container.removeView(viewList.get(position));
     }
 }
